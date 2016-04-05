@@ -26,27 +26,27 @@ trait SessionOperation
         $this->session->put($key, $data);
     }
 
-    public function putSidInSession($token)
+    private function putSidInSession($token)
     {
         $this->putSessionValue($this->sidKeyName, $token);
     }
 
-    public function putUserInfoInSession($userInfo)
+    private function putUserInfoInSession($userInfo)
     {
         $this->putSessionValue($this->userInfoKeyName, $userInfo);
     }
 
-    public function forgetSidFromSession()
+    private function forgetSidFromSession()
     {
         $this->forgetSessionValue($this->sidKeyName);
     }
 
-    public function forgetUserInfoFromSession()
+    private function forgetUserInfoFromSession()
     {
         $this->forgetSessionValue($this->userInfoKeyName);
     }
 
-    public function flushSsoSession()
+    private function flushSsoSession()
     {
         $this->forgetSidFromSession();
         $this->forgetUserInfoFromSession();

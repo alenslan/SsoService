@@ -9,7 +9,7 @@ use Log;
 use Session;
 use Ltbl\SsoService\Base;
 
-class Uc extends SsoBase
+class Server extends SsoBase
 {       
     public function __construct()
     {
@@ -18,6 +18,10 @@ class Uc extends SsoBase
 
     public function postUserInfo($userInfo)
     {
+        if (! $userInfo) return false;
+        if (is_array($userInfo)) {
+            $userInfo = json_encode($userInfo);
+        }
         $token = $this->getSidFromSession();
         $args = [
             'token2' => $token,
