@@ -25,6 +25,6 @@ class SsoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        
     }
 }

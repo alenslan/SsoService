@@ -15,6 +15,7 @@ use Ltbl\SsoService\SsoException;
 class Base
 {   
     use SessionOperation;
+    
     protected $client;
     
     public function __construct()
@@ -60,7 +61,7 @@ class Base
         $url .= '?' . $query;
 
         $res = $this->client->request('get', $url);
-        if($res->getStatusCode() != 200) {
+        if ($res->getStatusCode() != 200) {
             Log::error('HTTP错误: SSOURL连接出错');
             throw SsoException::httpWithSsoServerError($url);
         }
@@ -72,7 +73,7 @@ class Base
     {
         $res = $this->client->request('post', $url, ['form_params' => $args]);
         
-        if($res->getStatusCode() != 200) {
+        if ($res->getStatusCode() != 200) {
             Log::error('HTTP错误: SSOURL连接出错');
             throw SsoException::httpWithSsoServerError($url);
         }
