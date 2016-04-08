@@ -5,7 +5,7 @@
  */
 namespace Ltbl\SsoService;
 
-trait SessionOperation 
+trait SessionOperation
 {
     private $session;
     private $sidKeyName;

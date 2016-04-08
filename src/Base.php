@@ -13,7 +13,7 @@ use Ltbl\SsoService\SessionOperation;
 use Ltbl\SsoService\SsoException;
 
 class Base
-{   
+{
     use SessionOperation;
     
     protected $client;
@@ -45,7 +45,9 @@ class Base
 
     protected function setQuery($args)
     {
-        if (! $args) return '';
+        if (! $args) {
+            return '';
+        }
         $query = [];
         foreach ($args as $key => $value) {
             $query[] = $key . '=' . $value;
@@ -91,14 +93,15 @@ class Base
     {
         $token2 = $this->getSidFromSession();
 
-        if (! $token2) return false;
-        
+        if (! $token2) {
+            return false;
+        }
         $content = $this->get($this->ssoSidUrl, ['token2' => $token2]);
         $content = json_decode($content);
         
         if (! $content) {
             return false;
-        } 
+        }
         // 当返回的为error, 表示 sid不存在sso, 需要清掉本地sid，重新申请个
         if ($content->code == 'error') {
             $this->flushSsoSession();
@@ -125,7 +128,9 @@ class Base
         $content = $this->get($this->ssoTokenUrl, ['token1' => $onceToken]);
 
         $content = json_decode($content);
-        if (! $content) return false;
+        if (! $content) {
+            return false;
+        }
         
         if ($content->code == 'ok') {
             $this->putSidInSession($content->key);
@@ -139,13 +144,15 @@ class Base
     {
         $token = $this->getSidFromSession();
         
-        if (! $token) return false;
-        
+        if (! $token) {
+            return false;
+        }
         $content = $this->get($this->ssoLogoutUrl, ['token2' => $token]);
         $content = json_decode($content);
         
-        if (! $content) return false;
-        
+        if (! $content) {
+            return false;
+        }
         if ($content->code == 'ok') {
             $this->putUserInfoInSession($content->userInfo);
         }

@@ -14,7 +14,7 @@ class SsoServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/ssolua.php' => config_path('ssolua.php'),
+            __DIR__.'/config/ssolua.php' => config_path('ssolua.php'),
         ], 'config');
     }
 

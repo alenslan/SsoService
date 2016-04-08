@@ -3,9 +3,7 @@
  * Sso的异常行为模块
  *
  */
-
 namespace Ltbl\SsoService;
-
 
 class SsoException
 {

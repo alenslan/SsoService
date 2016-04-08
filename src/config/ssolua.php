@@ -17,4 +17,3 @@ return [
     // 登出请求 用于APP应用端
     'ssoLogoutUrl' => 'http://127.0.0.1:82/sso/logout',
 ];
-

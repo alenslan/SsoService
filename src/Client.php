@@ -7,9 +7,8 @@ namespace Ltbl\SsoService;
 
 use Ltbl\SsoService\Base;
 
-
 class Client extends Base
-{       
+{
     public function __construct()
     {
         parent::__construct();

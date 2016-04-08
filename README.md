@@ -13,7 +13,7 @@
 添加到composer.json
 
     "require": {
-        "Ltbl/SsoService": "~1.0"
+        "Ltbl/SsoService": "~1.*"
     }
     
 ## 私有包安装 

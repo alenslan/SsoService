@@ -10,7 +10,7 @@ use Session;
 use Ltbl\SsoService\Base;
 
 class Server extends SsoBase
-{       
+{
     public function __construct()
     {
         parent::__construct();
@@ -18,7 +18,9 @@ class Server extends SsoBase
 
     public function postUserInfo($userInfo)
     {
-        if (! $userInfo) return false;
+        if (! $userInfo) {
+            return false;
+        }
         if (is_array($userInfo)) {
             $userInfo = json_encode($userInfo);
         }
@@ -29,8 +31,9 @@ class Server extends SsoBase
         ];
         $content = $this->post($this->ssoUserInfoUrl, $args);
         $content = json_decode($content);
-        if (! $content) return false;
-        
+        if (! $content) {
+            return false;
+        }
         if ($content->code == 'ok') {
             $this->putUserInfoInSession($content->userInfo);
             return true;
